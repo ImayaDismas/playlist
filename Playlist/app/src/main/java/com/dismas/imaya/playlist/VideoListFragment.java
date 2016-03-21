@@ -7,6 +7,8 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 
+import com.dismas.imaya.playlist.content.YouTubeContent;
+//import com.eden.youtubesample.fragment.YouTubeFragment;
 import com.google.android.youtube.player.YouTubeIntents;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
@@ -69,35 +71,35 @@ public class VideoListFragment extends ListFragment {
                             DEVELOPER_KEY, video.id, 0, true, true));
                 }
                 break;
-            case 4:
-                //Opens in the YouTubeSupportFragment
-                final YouTubeFragment fragment = YouTubeFragment.newInstance(video.id);
-                getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
-                break;
-            case 5:
-                //Opens in Custom Activity
-                final Intent fragIntent = new Intent(context, YouTubeFragmentActivity.class);
-                fragIntent.putExtra(YouTubeFragmentActivity.KEY_VIDEO_ID, video.id);
-                startActivity(fragIntent);
-                break;
-            case 6:
-                //Opens in the YouTubePlayerView
-                final Intent actIntent = new Intent(context, YouTubeActivity.class);
-                actIntent.putExtra(YouTubeActivity.KEY_VIDEO_ID, video.id);
-                startActivity(actIntent);
-                break;
-            case 7:
-                //Opens in the the custom Lightbox activity
-                final Intent lightboxIntent = new Intent(context, CustomLightboxActivity.class);
-                lightboxIntent.putExtra(CustomLightboxActivity.KEY_VIDEO_ID, video.id);
-                startActivity(lightboxIntent);
-                break;
-            case 8:
-                //Custom player controls
-                final Intent controlsIntent = new Intent(context, CustomYouTubeControlsActivity.class);
-                controlsIntent.putExtra(CustomLightboxActivity.KEY_VIDEO_ID, video.id);
-                startActivity(controlsIntent);
-                break;
+//            case 4:
+//                //Opens in the YouTubeSupportFragment
+//                final YouTubeFragment fragment = YouTubeFragment.newInstance(video.id);
+//                getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
+//                break;
+//            case 5:
+//                //Opens in Custom Activity
+//                final Intent fragIntent = new Intent(context, YouTubeFragmentActivity.class);
+//                fragIntent.putExtra(YouTubeFragmentActivity.KEY_VIDEO_ID, video.id);
+//                startActivity(fragIntent);
+//                break;
+//            case 6:
+//                //Opens in the YouTubePlayerView
+//                final Intent actIntent = new Intent(context, YouTubeActivity.class);
+//                actIntent.putExtra(YouTubeActivity.KEY_VIDEO_ID, video.id);
+//                startActivity(actIntent);
+//                break;
+//            case 7:
+//                //Opens in the the custom Lightbox activity
+//                final Intent lightboxIntent = new Intent(context, CustomLightboxActivity.class);
+//                lightboxIntent.putExtra(CustomLightboxActivity.KEY_VIDEO_ID, video.id);
+//                startActivity(lightboxIntent);
+//                break;
+//            case 8:
+//                //Custom player controls
+//                final Intent controlsIntent = new Intent(context, CustomYouTubeControlsActivity.class);
+//                controlsIntent.putExtra(CustomLightboxActivity.KEY_VIDEO_ID, video.id);
+//                startActivity(controlsIntent);
+//                break;
 
 
         }
