@@ -1,28 +1,25 @@
 package com.dismas.imaya.playlist;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBarActivity;
 
-import com.google.android.youtube.player.YouTubeApiServiceUtil;
-import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.dismas.imaya.playlist.fragment.YouTubeFragment;
 
 /***********************************************************************************
  * The MIT License (MIT)
- * <p/>
+
  * Copyright (c) 2015 Scott Cooper
- * <p/>
+
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * <p/>
+
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * <p/>
+
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,26 +29,26 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
  * THE SOFTWARE.
  ***********************************************************************************/
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * A sample Activity hosting a YouTubeFragment. You could place the Fragment anywhere in the layout.
+ */
+public class YouTubeFragmentActivity extends ActionBarActivity {
+
+    public static final String KEY_VIDEO_ID = "KEY_VIDEO_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        //Only add the toolbar if we are on Honeycomb and above
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_youtube_fragment);
+
+        final Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null && bundle.containsKey(KEY_VIDEO_ID)) {
+            final String videoId = bundle.getString(KEY_VIDEO_ID);
+            final YouTubeFragment fragment = (YouTubeFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_youtube);
+            fragment.setVideoId(videoId);
         }
 
-
-        //Check for any issues
-        final YouTubeInitializationResult result = YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
-
-        if (result != YouTubeInitializationResult.SUCCESS) {
-            //If there are any issues we can show an error dialog.
-            result.getErrorDialog(this, 0).show();
-        }
     }
 }
