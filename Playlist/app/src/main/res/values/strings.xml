@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Eden - YouTube Example</string>
+    <string name="app_name">Fan</string>
 
     <string name="video_list_title">Title</string>
     <string name="error_init_failure">Initialization failure: Unable to play video</string>
